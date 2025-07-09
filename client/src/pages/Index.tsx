@@ -492,9 +492,95 @@ const Index = () => {
 
       {/* Footer */}
       <footer className="py-16 px-6 bg-background border-t border-border">
-        <div className="container mx-auto text-center">
-          <p className="text-muted-foreground text-lg">© 2024 Mohammad Sami. All rights reserved.</p>
-          <p className="text-muted-foreground/80 mt-3 text-lg">Shaping the future with AI and cloud innovation</p>
+        <div className="container mx-auto">
+          <div className="grid md:grid-cols-3 gap-12 mb-12">
+            {/* About Section */}
+            <div>
+              <h3 className="text-2xl font-bold text-foreground mb-6">Mohammad Sami</h3>
+              <p className="text-muted-foreground mb-6 text-lg">
+                AI Research & Development specialist focused on creating innovative solutions 
+                in machine learning, cloud computing, and intelligent systems.
+              </p>
+              <div className="flex space-x-4">
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-300 hover:scale-110">
+                  <Github className="h-6 w-6" />
+                </a>
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-300 hover:scale-110">
+                  <Linkedin className="h-6 w-6" />
+                </a>
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-300 hover:scale-110">
+                  <Mail className="h-6 w-6" />
+                </a>
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h3 className="text-2xl font-bold text-foreground mb-6">Quick Links</h3>
+              <ul className="space-y-3">
+                <li>
+                  <a href="#about" className="text-muted-foreground hover:text-primary transition-colors duration-300 text-lg">
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a href="#skills" className="text-muted-foreground hover:text-primary transition-colors duration-300 text-lg">
+                    Skills
+                  </a>
+                </li>
+                <li>
+                  <a href="#projects" className="text-muted-foreground hover:text-primary transition-colors duration-300 text-lg">
+                    Projects
+                  </a>
+                </li>
+                <li>
+                  <a href="#certifications" className="text-muted-foreground hover:text-primary transition-colors duration-300 text-lg">
+                    Certifications
+                  </a>
+                </li>
+                <li>
+                  <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors duration-300 text-lg">
+                    Contact
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Specializations */}
+            <div>
+              <h3 className="text-2xl font-bold text-foreground mb-6">Specializations</h3>
+              <ul className="space-y-3">
+                <li className="text-muted-foreground text-lg">
+                  <Brain className="h-4 w-4 inline mr-2 text-primary" />
+                  Machine Learning
+                </li>
+                <li className="text-muted-foreground text-lg">
+                  <Database className="h-4 w-4 inline mr-2 text-primary" />
+                  Data Science
+                </li>
+                <li className="text-muted-foreground text-lg">
+                  <Cpu className="h-4 w-4 inline mr-2 text-primary" />
+                  AI Research
+                </li>
+                <li className="text-muted-foreground text-lg">
+                  <Cloud className="h-4 w-4 inline mr-2 text-primary" />
+                  Cloud Computing
+                </li>
+                <li className="text-muted-foreground text-lg">
+                  <Globe className="h-4 w-4 inline mr-2 text-primary" />
+                  Web Development
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="border-t border-border pt-8 text-center">
+            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+              <p className="text-muted-foreground text-lg">© 2024 Mohammad Sami. All rights reserved.</p>
+              <p className="text-muted-foreground/80 text-lg">Shaping the future with AI and cloud innovation</p>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
