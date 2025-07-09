@@ -9,83 +9,83 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 210 20% 98%;
-    --foreground: 215 25% 15%;
+    --background: 220 25% 8%;
+    --foreground: 210 20% 95%;
 
-    --card: 210 20% 99%;
-    --card-foreground: 215 25% 15%;
+    --card: 220 20% 12%;
+    --card-foreground: 210 20% 95%;
 
-    --popover: 210 20% 99%;
-    --popover-foreground: 215 25% 15%;
+    --popover: 220 20% 12%;
+    --popover-foreground: 210 20% 95%;
 
-    --primary: 215 80% 45%;
-    --primary-foreground: 210 20% 98%;
+    --primary: 280 85% 60%;
+    --primary-foreground: 220 25% 8%;
 
-    --secondary: 210 15% 95%;
-    --secondary-foreground: 215 25% 20%;
+    --secondary: 220 15% 20%;
+    --secondary-foreground: 210 20% 95%;
 
-    --muted: 210 15% 94%;
-    --muted-foreground: 215 15% 45%;
+    --muted: 220 15% 18%;
+    --muted-foreground: 210 15% 65%;
 
-    --accent: 200 70% 50%;
-    --accent-foreground: 210 20% 98%;
+    --accent: 340 75% 55%;
+    --accent-foreground: 220 25% 8%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 210 20% 90%;
-    --input: 210 20% 90%;
-    --ring: 215 80% 45%;
+    --border: 220 20% 25%;
+    --input: 220 20% 25%;
+    --ring: 280 85% 60%;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 210 20% 98%;
-    --sidebar-foreground: 215 25% 15%;
-    --sidebar-primary: 215 80% 45%;
-    --sidebar-primary-foreground: 210 20% 98%;
-    --sidebar-accent: 210 15% 95%;
-    --sidebar-accent-foreground: 215 25% 20%;
-    --sidebar-border: 210 20% 90%;
-    --sidebar-ring: 215 80% 45%;
+    --sidebar-background: 220 25% 8%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 280 85% 60%;
+    --sidebar-primary-foreground: 220 25% 8%;
+    --sidebar-accent: 220 15% 20%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 220 20% 25%;
+    --sidebar-ring: 280 85% 60%;
   }
 
   .dark {
-    --background: 215 30% 8%;
+    --background: 220 25% 8%;
     --foreground: 210 20% 95%;
 
-    --card: 215 30% 10%;
+    --card: 220 20% 12%;
     --card-foreground: 210 20% 95%;
 
-    --popover: 215 30% 10%;
+    --popover: 220 20% 12%;
     --popover-foreground: 210 20% 95%;
 
-    --primary: 215 80% 55%;
-    --primary-foreground: 215 30% 8%;
+    --primary: 280 85% 60%;
+    --primary-foreground: 220 25% 8%;
 
-    --secondary: 215 20% 15%;
+    --secondary: 220 15% 20%;
     --secondary-foreground: 210 20% 95%;
 
-    --muted: 215 20% 15%;
+    --muted: 220 15% 18%;
     --muted-foreground: 210 15% 65%;
 
-    --accent: 200 70% 60%;
-    --accent-foreground: 215 30% 8%;
+    --accent: 340 75% 55%;
+    --accent-foreground: 220 25% 8%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 215 20% 20%;
-    --input: 215 20% 20%;
-    --ring: 215 80% 55%;
+    --border: 220 20% 25%;
+    --input: 220 20% 25%;
+    --ring: 280 85% 60%;
 
-    --sidebar-background: 215 30% 8%;
+    --sidebar-background: 220 25% 8%;
     --sidebar-foreground: 210 20% 95%;
-    --sidebar-primary: 215 80% 55%;
-    --sidebar-primary-foreground: 215 30% 8%;
-    --sidebar-accent: 215 20% 15%;
+    --sidebar-primary: 280 85% 60%;
+    --sidebar-primary-foreground: 220 25% 8%;
+    --sidebar-accent: 220 15% 20%;
     --sidebar-accent-foreground: 210 20% 95%;
-    --sidebar-border: 215 20% 20%;
-    --sidebar-ring: 215 80% 55%;
+    --sidebar-border: 220 20% 25%;
+    --sidebar-ring: 280 85% 60%;
   }
 }
 
@@ -125,29 +125,39 @@ All colors MUST be HSL.
   }
 
   .gradient-bg {
-    background: linear-gradient(135deg, hsl(215 80% 45%) 0%, hsl(200 70% 50%) 50%, hsl(215 60% 60%) 100%);
+    background: linear-gradient(135deg, hsl(280 85% 60%) 0%, hsl(340 75% 55%) 50%, hsl(280 70% 70%) 100%);
   }
 
   .glass-effect {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  .skill-progress {
+  .skill-card {
     position: relative;
     overflow: hidden;
+    transition: all 0.4s ease;
   }
 
-  .skill-progress::before {
+  .skill-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(168, 85, 247, 0.4);
+  }
+
+  .skill-card::before {
     content: '';
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, hsl(215 80% 45%), transparent);
-    animation: shimmer 2s infinite;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .skill-card:hover::before {
+    left: 100%;
   }
 
   .floating-animation {
@@ -156,6 +166,83 @@ All colors MUST be HSL.
 
   .floating-animation:nth-child(2) { animation-delay: -2s; }
   .floating-animation:nth-child(3) { animation-delay: -4s; }
+
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .tech-category {
+    background: linear-gradient(135deg, hsl(220 20% 12%) 0%, hsl(220 15% 18%) 100%);
+    border: 1px solid hsl(280 85% 60% / 0.2);
+    transition: all 0.4s ease;
+  }
+
+  .tech-category:hover {
+    border-color: hsl(280 85% 60% / 0.6);
+    box-shadow: 0 8px 32px hsl(280 85% 60% / 0.2);
+  }
+
+  .tech-item {
+    transition: all 0.3s ease;
+  }
+
+  .tech-item:hover {
+    transform: scale(1.1);
+    color: hsl(280 85% 60%);
+  }
+
+  .hero-3d {
+    position: relative;
+    transform-style: preserve-3d;
+  }
+
+  .floating-shapes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .shape {
+    position: absolute;
+    background: linear-gradient(45deg, hsl(280 85% 60% / 0.1), hsl(340 75% 55% / 0.1));
+    border-radius: 50%;
+    animation: floatShapes 8s ease-in-out infinite;
+  }
+
+  .shape:nth-child(1) {
+    width: 80px;
+    height: 80px;
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+  }
+
+  .shape:nth-child(2) {
+    width: 120px;
+    height: 120px;
+    top: 60%;
+    right: 15%;
+    animation-delay: -2s;
+  }
+
+  .shape:nth-child(3) {
+    width: 60px;
+    height: 60px;
+    bottom: 30%;
+    left: 20%;
+    animation-delay: -4s;
+  }
+
+  .typing-animation {
+    overflow: hidden;
+    border-right: 2px solid hsl(280 85% 60%);
+    white-space: nowrap;
+    animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+  }
 }
 
 @keyframes fadeIn {
@@ -165,32 +252,42 @@ All colors MUST be HSL.
   }
 }
 
-@keyframes shimmer {
-  0% { left: -100%; }
-  100% { left: 100%; }
-}
-
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes floatShapes {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(180deg); }
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: hsl(280 85% 60%); }
 }
 
 /* Professional scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(210 15% 94%);
+  background: hsl(220 20% 12%);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(215 80% 45%);
-  border-radius: 3px;
+  background: hsl(280 85% 60%);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(215 80% 35%);
+  background: hsl(280 85% 50%);
 }
 
 /* Smooth transitions */
