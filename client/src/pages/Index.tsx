@@ -143,10 +143,7 @@ const Index = () => {
         
         <div className="container mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
           <div className="text-left animate-fade-in">
-            <div className="inline-flex items-center px-6 py-3 bg-primary/10 text-primary rounded-full text-sm font-medium mb-8 border border-primary/20">
-              <Zap className="w-4 h-4 mr-2" />
-              Available for Collaboration
-            </div>
+
             <h1 className="text-6xl md:text-8xl font-bold text-foreground mb-8 leading-tight">
               Mohammad <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Sami</span>
             </h1>
@@ -227,9 +224,9 @@ const Index = () => {
                 </Card>
                 <Card className="bg-accent/5 border-accent/20 hover:shadow-xl transition-all duration-300 hover:scale-105">
                   <CardContent className="p-8 text-center">
-                    <Cloud className="h-12 w-12 text-accent mx-auto mb-4" />
-                    <h4 className="font-semibold text-foreground text-lg">Cloud Computing</h4>
-                    <p className="text-sm text-muted-foreground">Scalable Solutions</p>
+                    <Cpu className="h-12 w-12 text-accent mx-auto mb-4" />
+                    <h4 className="font-semibold text-foreground text-lg">Technology Innovation</h4>
+                    <p className="text-sm text-muted-foreground">Cutting-edge Solutions</p>
                   </CardContent>
                 </Card>
               </div>
@@ -308,25 +305,25 @@ const Index = () => {
             <p className="text-2xl text-muted-foreground">Cutting-edge technologies powering innovation</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {techStack.map((category, categoryIndex) => (
-              <Card key={categoryIndex} className="tech-category skill-card p-8 rounded-2xl bg-card/80 border-border hover:shadow-2xl transition-all duration-500">
+              <Card key={categoryIndex} className="tech-category skill-card p-6 rounded-xl bg-card/80 border-border hover:shadow-2xl transition-all duration-500">
                 <CardContent className="p-0">
-                  <div className="text-center mb-8">
-                    <h3 className="text-2xl font-semibold text-foreground mb-6">
+                  <div className="text-center mb-6">
+                    <h3 className="text-xl font-semibold text-foreground mb-4">
                       {category.category}
                     </h3>
-                    <div className="w-16 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-8"></div>
+                    <div className="w-12 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6"></div>
                   </div>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-3">
                     {category.technologies.map((tech, techIndex) => (
-                      <div key={techIndex} className="tech-item text-center p-4 rounded-xl hover:bg-primary/10 cursor-pointer transition-all duration-300 group hover:scale-105 hover:shadow-lg">
-                        <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/30 transition-all duration-300 group-hover:rotate-12 group-hover:scale-110">
-                          <div className="text-primary group-hover:text-primary/90 transition-all duration-300">
+                      <div key={techIndex} className="tech-item text-center p-3 rounded-lg hover:bg-primary/10 cursor-pointer transition-all duration-300 group hover:scale-105 hover:shadow-md">
+                        <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-3 group-hover:bg-primary/30 transition-all duration-300 group-hover:rotate-12 group-hover:scale-110">
+                          <div className="text-primary group-hover:text-primary/90 transition-all duration-300 [&>svg]:w-6 [&>svg]:h-6">
                             {tech.icon}
                           </div>
                         </div>
-                        <h4 className="font-medium text-foreground text-sm group-hover:text-primary transition-all duration-300">{tech.name}</h4>
+                        <h4 className="font-medium text-foreground text-xs group-hover:text-primary transition-all duration-300">{tech.name}</h4>
                       </div>
                     ))}
                   </div>
