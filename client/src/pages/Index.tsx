@@ -40,66 +40,66 @@ const Index = () => {
   const techStack = [
     {
       category: "Programming Languages",
-      icon: <Code className="w-8 h-8" />,
+      icon: Code,
       technologies: [
-        { name: "Python", icon: <Code className="w-8 h-8" /> },
-        { name: "Java", icon: <Code className="w-8 h-8" /> },
-        { name: "C", icon: <Code className="w-8 h-8" /> },
-        { name: "SQL", icon: <Database className="w-8 h-8" /> }
+        { name: "Python", icon: Code },
+        { name: "Java", icon: Code },
+        { name: "C", icon: Code },
+        { name: "SQL", icon: Database }
       ]
     },
     {
       category: "ML / Data Science",
-      icon: <Brain className="w-8 h-8" />,
+      icon: Brain,
       technologies: [
-        { name: "Pandas", icon: <Brain className="w-8 h-8" /> },
-        { name: "NumPy", icon: <Brain className="w-8 h-8" /> },
-        { name: "PyTorch", icon: <Brain className="w-8 h-8" /> },
-        { name: "TensorFlow", icon: <Brain className="w-8 h-8" /> },
-        { name: "OpenCV", icon: <Brain className="w-8 h-8" /> }
+        { name: "Pandas", icon: Brain },
+        { name: "NumPy", icon: Brain },
+        { name: "PyTorch", icon: Brain },
+        { name: "TensorFlow", icon: Brain },
+        { name: "OpenCV", icon: Brain }
       ]
     },
     {
       category: "NLP",
-      icon: <Brain className="w-8 h-8" />,
+      icon: Brain,
       technologies: [
-        { name: "spaCy", icon: <Brain className="w-8 h-8" /> },
-        { name: "NLTK", icon: <Brain className="w-8 h-8" /> },
-        { name: "Text Extraction (Regex)", icon: <Brain className="w-8 h-8" /> }
+        { name: "spaCy", icon: Brain },
+        { name: "NLTK", icon: Brain },
+        { name: "Text Extraction (Regex)", icon: Brain }
       ]
     },
     {
       category: "Web Development & Deployment",
-      icon: <Globe className="w-8 h-8" />,
+      icon: Globe,
       technologies: [
-        { name: "HTML5", icon: <Globe className="w-8 h-8" /> },
-        { name: "CSS", icon: <Palette className="w-8 h-8" /> },
-        { name: "Flask", icon: <Server className="w-8 h-8" /> },
-        { name: "Streamlit", icon: <Server className="w-8 h-8" /> },
-        { name: "Netlify", icon: <Cloud className="w-8 h-8" /> },
-        { name: "MongoDB", icon: <Database className="w-8 h-8" /> },
-        { name: "MySQL", icon: <Database className="w-8 h-8" /> }
+        { name: "HTML5", icon: Globe },
+        { name: "CSS", icon: Palette },
+        { name: "Flask", icon: Server },
+        { name: "Streamlit", icon: Server },
+        { name: "Netlify", icon: Cloud },
+        { name: "MongoDB", icon: Database },
+        { name: "MySQL", icon: Database }
       ]
     },
     {
       category: "Visualisation",
-      icon: <Monitor className="w-8 h-8" />,
+      icon: Monitor,
       technologies: [
-        { name: "Matplotlib", icon: <Monitor className="w-8 h-8" /> },
-        { name: "PowerBI", icon: <Monitor className="w-8 h-8" /> },
-        { name: "Tableau", icon: <Monitor className="w-8 h-8" /> }
+        { name: "Matplotlib", icon: Monitor },
+        { name: "PowerBI", icon: Monitor },
+        { name: "Tableau", icon: Monitor }
       ]
     },
     {
       category: "Tools",
-      icon: <Monitor className="w-8 h-8" />,
+      icon: Monitor,
       technologies: [
-        { name: "Git", icon: <GitBranch className="w-8 h-8" /> },
-        { name: "GitHub", icon: <GitBranch className="w-8 h-8" /> },
-        { name: "Jupyter", icon: <Monitor className="w-8 h-8" /> },
-        { name: "Figma", icon: <Palette className="w-8 h-8" /> },
-        { name: "Canva", icon: <Palette className="w-8 h-8" /> },
-        { name: "Twilio", icon: <Smartphone className="w-8 h-8" /> }
+        { name: "Git", icon: GitBranch },
+        { name: "GitHub", icon: GitBranch },
+        { name: "Jupyter", icon: Monitor },
+        { name: "Figma", icon: Palette },
+        { name: "Canva", icon: Palette },
+        { name: "Twilio", icon: Smartphone }
       ]
     }
   ];
@@ -319,8 +319,17 @@ const Index = () => {
                     {category.technologies.map((tech, techIndex) => (
                       <div key={techIndex} className="tech-item text-center p-3 rounded-lg hover:bg-primary/10 cursor-pointer transition-all duration-300 group hover:scale-105 hover:shadow-md">
                         <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-3 group-hover:bg-primary/30 transition-all duration-300 group-hover:rotate-12 group-hover:scale-110">
-                          <div className="text-primary group-hover:text-primary/90 transition-all duration-300 [&>svg]:w-6 [&>svg]:h-6">
-                            {tech.icon}
+                          <div className="text-primary group-hover:text-primary/90 transition-all duration-300">
+                            {tech.icon === Code && <Code className="w-6 h-6" />}
+                            {tech.icon === Brain && <Brain className="w-6 h-6" />}
+                            {tech.icon === Database && <Database className="w-6 h-6" />}
+                            {tech.icon === Globe && <Globe className="w-6 h-6" />}
+                            {tech.icon === Palette && <Palette className="w-6 h-6" />}
+                            {tech.icon === Server && <Server className="w-6 h-6" />}
+                            {tech.icon === Cloud && <Cloud className="w-6 h-6" />}
+                            {tech.icon === Monitor && <Monitor className="w-6 h-6" />}
+                            {tech.icon === GitBranch && <GitBranch className="w-6 h-6" />}
+                            {tech.icon === Smartphone && <Smartphone className="w-6 h-6" />}
                           </div>
                         </div>
                         <h4 className="font-medium text-foreground text-xs group-hover:text-primary transition-all duration-300">{tech.name}</h4>
