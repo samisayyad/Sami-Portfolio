@@ -274,7 +274,7 @@ All colors MUST be HSL.
     overflow: hidden;
     border-right: 2px solid hsl(280 85% 60%);
     white-space: nowrap;
-    animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+    animation: typing 5.5s steps(60, end), blink-caret 0.75s step-end infinite;
   }
 }
 

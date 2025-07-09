@@ -1,16 +1,83 @@
 
+import React, { useState } from "react";
 import { ArrowRight, Github, Linkedin, Mail, ExternalLink, Code, Brain, Cloud, Award, User, MessageSquare, Download, MapPin, Calendar, Star, Zap, Cpu, Database, Globe, Server, Smartphone, Palette, Monitor, Layers, GitBranch } from "lucide-react";
 import profileImage from "@assets/profile11_1752055966694.jpg";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
 
 const Index = () => {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    if (!formData.name || !formData.email || !formData.message) {
+      toast({
+        title: "Error",
+        description: "Please fill in all fields",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      console.log('Submitting form data:', formData);
+      
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      const result = await response.json();
+      console.log('Server response:', result);
+
+      if (response.ok) {
+        toast({
+          title: "Success!",
+          description: "Your message has been sent successfully. I'll get back to you soon!",
+        });
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        throw new Error(result.error || 'Failed to send message');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const projects = [
     {
-      title: "AI Research Platform",
-      description: "Leading-edge AI research platform for intelligent system development and model optimization with advanced ML algorithms",
+      title: "HealthVault_API1",
+      description: "A RESTful API for health data management that supports user authentication, CRUD operations for health records, built with Node.js, Express, and MongoDB",
       image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500&h=300&fit=crop",
       technologies: ["Python", "TensorFlow", "AWS", "Docker"],
       liveUrl: "#",
@@ -18,19 +85,19 @@ const Index = () => {
       featured: true
     },
     {
-      title: "Cloud Infrastructure Automation",
-      description: "Serverless architecture implementation for scalable cloud solutions with automated deployment pipelines",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=300&fit=crop",
+      title: "Your Personal Interviewer!",
+      description: "A AI tool for interview prep that includes algorithm challenges, code execution via Dockerized environment, scoring/reporting, built with Python/Flask and React",
+      image: "https://plus.unsplash.com/premium_photo-1676998931123-75789162f170?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       technologies: ["AWS", "Python", "Terraform", "Docker"],
       liveUrl: "#",
       githubUrl: "#",
       featured: true
     },
     {
-      title: "Machine Learning Pipeline",
-      description: "End-to-end ML pipeline for data processing, model training, and intelligent predictions at scale",
-      image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=500&h=300&fit=crop",
-      technologies: ["Python", "Azure", "ML", "APIs"],
+      title: "Plant-Leaf-Detection",
+      description: "A machine learning pipeline using TensorFlow to classify plant diseases from leaf images. Supports transfer learning on ResNet, performance reporting, and model deployment with Flask",
+      image: "https://user-images.githubusercontent.com/108793964/216769362-3ba51391-22b0-47fa-82af-e905a0aa831f.png",
+      technologies: ["Python","ML","TensorFlow", "APIs"],
       liveUrl: "#",
       githubUrl: "#",
       featured: false
@@ -65,7 +132,9 @@ const Index = () => {
       technologies: [
         { name: "spaCy", icon: Brain },
         { name: "NLTK", icon: Brain },
-        { name: "Text Extraction (Regex)", icon: Brain }
+        { name: "OpenAI API", icon: Brain },
+        { name: "MediaPipe", icon: Brain }
+
       ]
     },
     {
@@ -74,11 +143,17 @@ const Index = () => {
       technologies: [
         { name: "HTML5", icon: Globe },
         { name: "CSS", icon: Palette },
+        { name: "JS", icon: Globe },
         { name: "Flask", icon: Server },
+        { name: "React.JS", icon: Server },
+        { name: "Express.JS", icon: Server },
+        { name: "TypeScript-Basic", icon: Server },
         { name: "Streamlit", icon: Server },
         { name: "Netlify", icon: Cloud },
         { name: "MongoDB", icon: Database },
-        { name: "MySQL", icon: Database }
+        { name: "MySQL", icon: Database },
+        { name: "Render", icon: Cloud }
+
       ]
     },
     {
@@ -86,8 +161,7 @@ const Index = () => {
       icon: Monitor,
       technologies: [
         { name: "Matplotlib", icon: Monitor },
-        { name: "PowerBI", icon: Monitor },
-        { name: "Tableau", icon: Monitor }
+        { name: "PowerBI", icon: Monitor }
       ]
     },
     {
@@ -99,16 +173,32 @@ const Index = () => {
         { name: "Jupyter", icon: Monitor },
         { name: "Figma", icon: Palette },
         { name: "Canva", icon: Palette },
-        { name: "Twilio", icon: Smartphone }
+        { name: "replit", icon: Smartphone },
+        { name: "lovable", icon: Smartphone }
       ]
     }
   ];
 
   const certifications = [
-    { name: "AWS Cloud Practitioner", issuer: "Amazon Web Services", date: "2024" },
-    { name: "Microsoft Azure Fundamentals", issuer: "Microsoft", date: "2024" },
-    { name: "Google Cloud Platform", issuer: "Google", date: "2023" }
+    { name: "AWS Academy Cloud Developing Course", issuer: "Amazon Web Services", date: "2025" },
+    { name: "Microsoft Azure Fundamentals", issuer: "Microsoft", date: "2025" },
+    { name: "Google Cloud Platform", issuer: "Google", date: "2025" },
+    { name: "Microsoft Azure Applied Skills", issuer: "Microsoft", date: "2025" },
+    { name: "Appied Artificial Intellingence Practical Implementatiob", issuer: "Microsoft", date: "2025" },
+    { name: "Oracle Java Programming Certificate", issuer: "Pinnacle Labs", date: "2025" }
+
+
   ];
+
+  const handleDownloadResume = () => {
+    // Create a link element and trigger download
+    const link = document.createElement('a');
+    link.href = '/Mohammad_Sami_Resume.pdf'; // Path to your resume in public folder
+    link.download = 'Mohammad_Sami_Resume.pdf'; // Name for downloaded file
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -148,18 +238,17 @@ const Index = () => {
               Mohammad <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Sami</span>
             </h1>
             <div className="text-3xl md:text-4xl text-accent font-semibold mb-8 typing-animation">
-              AI Research Engineer
+            AI & Tech Enthusiast
             </div>
             <p className="text-xl text-muted-foreground mb-10 leading-relaxed max-w-2xl">
-              Leading applied AI research at Wipro, transforming complex problems into intelligent, 
-              scalable solutions through cutting-edge technology and innovative thinking.
+            An aspiring tech innovator passionate about building intelligent systems at the intersection of AI, cloud computing, and automation.
             </p>
             <div className="flex flex-col sm:flex-row gap-6">
-              <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white shadow-2xl hover:scale-105 transition-all duration-300 hover:rotate-1 hover:shadow-primary/50">
+              <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white shadow-2xl hover:scale-105 transition-all duration-300 hover:rotate-1 hover:shadow-primary/50"  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
                 <Mail className="mr-2 h-5 w-5" />
                 Let's Connect
               </Button>
-              <Button size="lg" variant="outline" className="border-primary/30 text-primary hover:bg-primary/10 shadow-lg hover:scale-105 transition-all duration-300 hover:-rotate-1 hover:shadow-accent/30">
+              <Button size="lg" variant="outline" className="border-primary/30 text-primary hover:bg-primary/10 shadow-lg hover:scale-105 transition-all duration-300 hover:-rotate-1 hover:shadow-accent/30" onClick={handleDownloadResume}>
                 <Download className="mr-2 h-5 w-5" />
                 Download Resume
               </Button>
@@ -179,7 +268,7 @@ const Index = () => {
                   <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
                     <div className="bg-black/60 backdrop-blur-sm rounded-xl p-4">
                       <h3 className="text-white font-semibold text-lg">Mohammad Sami</h3>
-                      <p className="text-white/80 text-sm">AI Research Engineer</p>
+                      <p className="text-white/80 text-sm">Artificial Intellingence and Data Science</p>
                     </div>
                   </div>
                 </div>
@@ -206,12 +295,10 @@ const Index = () => {
             <div className="space-y-8">
               <h3 className="text-4xl font-semibold text-foreground mb-8">My Journey</h3>
               <p className="text-muted-foreground leading-relaxed text-xl">
-                As a passionate and driven tech enthusiast, I'm dedicated to driving innovation and building transformative solutions. 
-                Currently leading cutting-edge AI initiatives through hands-on research, model development, and implementation of intelligent systems.
+              Currently pursuing my B.E. in Computer Science and Engineering at KS School of Engineering & Management, I actively engage in hands-on projects that span AI research, cloud architecture, and ML model pipelines. Whether it’s optimizing model performance or deploying scalable infrastructure using AWS/Azure, I bring a balance of creativity and technical depth to every project I tackle.
               </p>
               <p className="text-muted-foreground leading-relaxed text-xl">
-                My core expertise includes AI/ML, cloud platforms, and data-driven problem-solving, with a strong ability to guide 
-                and inspire cross-functional teams to transform ideas into real-world automated solutions.
+              Alongside my academic journey, I’ve earned industry certifications from Amazon Web Services, Microsoft Azure, and Google Cloud, which reflect my drive to stay ahead in a rapidly evolving tech world. With a blend of 3D modeling, video editing, and a solid grip on programming fundamentals, I’m not only a developer but a creative thinker ready to take on future challenges.
               </p>
               
               <div className="grid grid-cols-2 gap-6 mt-12">
@@ -239,21 +326,21 @@ const Index = () => {
                   <div className="w-4 h-4 bg-primary rounded-full mt-3 flex-shrink-0"></div>
                   <div>
                     <h4 className="font-semibold text-foreground text-xl">AI Research & Development</h4>
-                    <p className="text-muted-foreground text-lg">Leading AI-powered R&D projects and intelligent system development</p>
+                    <p className="text-muted-foreground text-lg">Working on deep-learning-powered systems and data science workflows.</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-6 p-6 rounded-xl hover:bg-secondary/50 transition-all duration-300 hover:scale-105">
                   <div className="w-4 h-4 bg-accent rounded-full mt-3 flex-shrink-0"></div>
                   <div>
                     <h4 className="font-semibold text-foreground text-xl">Cloud Architecture</h4>
-                    <p className="text-muted-foreground text-lg">Designing scalable cloud solutions with AWS and Azure</p>
+                    <p className="text-muted-foreground text-lg">Designing and deploying scalable infrastructure using AWS, Azure, Docker, and Terraform.</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-6 p-6 rounded-xl hover:bg-secondary/50 transition-all duration-300 hover:scale-105">
                   <div className="w-4 h-4 bg-primary rounded-full mt-3 flex-shrink-0"></div>
                   <div>
                     <h4 className="font-semibold text-foreground text-xl">Technical Leadership</h4>
-                    <p className="text-muted-foreground text-lg">Mentoring teams and facilitating agile development processes</p>
+                    <p className="text-muted-foreground text-lg">Collaborating and mentoring within teams to deliver agile-based innovation and modern solutions.</p>
                   </div>
                 </div>
               </div>
@@ -266,7 +353,7 @@ const Index = () => {
               <CardContent className="p-10">
                 <div className="flex items-center mb-8">
                   <User className="h-10 w-10 text-primary mr-6" />
-                  <h3 className="text-3xl font-semibold text-foreground">Education</h3>
+                  <h3 className="text-3xl font-semibold text-foreground">Graduation</h3>
                 </div>
                 <div className="space-y-6">
                   <div>
@@ -282,13 +369,13 @@ const Index = () => {
               <CardContent className="p-10">
                 <div className="flex items-center mb-8">
                   <Award className="h-10 w-10 text-accent mr-6" />
-                  <h3 className="text-3xl font-semibold text-foreground">Experience</h3>
+                  <h3 className="text-3xl font-semibold text-foreground">Secondary Education</h3>
                 </div>
                 <div className="space-y-6">
                   <div>
-                    <h4 className="font-semibold text-foreground text-xl">Applied AI Research Team Lead</h4>
-                    <p className="text-muted-foreground text-lg">Wipro Limited</p>
-                    <p className="text-accent font-medium text-lg">Current Role</p>
+                    <h4 className="font-semibold text-foreground text-xl">Science - PCMB</h4>
+                    <p className="text-muted-foreground text-lg">Vishveshwaraya Technology University</p>
+                    <p className="text-accent font-medium text-lg">2020 - 2022</p>
                   </div>
                 </div>
               </CardContent>
@@ -439,21 +526,21 @@ const Index = () => {
                   <Mail className="h-8 w-8 text-primary" />
                   <div>
                     <p className="font-medium text-foreground text-xl">Email</p>
-                    <p className="text-muted-foreground text-lg">mohammad.sami@example.com</p>
+                    <p className="text-muted-foreground text-lg">naseemsayyad388@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-6 p-6 rounded-xl hover:bg-secondary/50 transition-all duration-300 hover:scale-105">
                   <Linkedin className="h-8 w-8 text-primary" />
                   <div>
                     <p className="font-medium text-foreground text-xl">LinkedIn</p>
-                    <p className="text-muted-foreground text-lg">mohammadsami01</p>
+                    <p className="text-muted-foreground text-lg">Mohammad Sami</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-6 p-6 rounded-xl hover:bg-secondary/50 transition-all duration-300 hover:scale-105">
                   <Github className="h-8 w-8 text-primary" />
                   <div>
                     <p className="font-medium text-foreground text-xl">GitHub</p>
-                    <p className="text-muted-foreground text-lg">mohammadsami</p>
+                    <p className="text-muted-foreground text-lg">samisayyad</p>
                   </div>
                 </div>
               </div>
@@ -464,24 +551,45 @@ const Index = () => {
                 <form className="space-y-8">
                   <div>
                     <Label htmlFor="name" className="text-foreground font-medium text-lg">Name</Label>
-                    <Input id="name" placeholder="Your name" className="mt-3 border-border focus:border-primary h-12 text-lg" />
-                  </div>
+                    <Input 
+                      id="name" 
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      placeholder="Your name" 
+                      className="mt-3 border-border focus:border-primary h-12 text-lg" 
+                      required/>                 
+                 </div>
                   <div>
                     <Label htmlFor="email" className="text-foreground font-medium text-lg">Email</Label>
-                    <Input id="email" type="email" placeholder="your.email@example.com" className="mt-3 border-border focus:border-primary h-12 text-lg" />
+                    <Input 
+                      id="email" 
+                      type="email" 
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="your.email@example.com" 
+                      className="mt-3 border-border focus:border-primary h-12 text-lg" 
+                      required
+                    />
                   </div>
                   <div>
                     <Label htmlFor="message" className="text-foreground font-medium text-lg">Message</Label>
                     <textarea 
                       id="message" 
                       rows={5}
+                      value={formData.message}
+                      onChange={handleInputChange}
                       placeholder="Your message..."
-                      className="w-full mt-3 px-4 py-3 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground text-lg"
+                      className="w-full mt-3 px-4 py-3 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground text-lg" 
+                      required
                     />
                   </div>
-                  <Button className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white shadow-xl h-14 text-lg hover:scale-105 transition-all duration-300">
+                  <Button 
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white shadow-xl h-14 text-lg hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
                     <MessageSquare className="mr-2 h-5 w-5" />
-                    Send Message
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </Button>
                 </form>
               </CardContent>
@@ -502,13 +610,13 @@ const Index = () => {
                 in machine learning, cloud computing, and intelligent systems.
               </p>
               <div className="flex space-x-4">
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-300 hover:scale-110">
+                <a href="https://github.com/samisayyad" className="text-muted-foreground hover:text-primary transition-colors duration-300 hover:scale-110">
                   <Github className="h-6 w-6" />
                 </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-300 hover:scale-110">
+                <a href="https://www.linkedin.com/in/mohammadsami01/" className="text-muted-foreground hover:text-primary transition-colors duration-300 hover:scale-110">
                   <Linkedin className="h-6 w-6" />
                 </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-300 hover:scale-110">
+                <a href="https://mail.google.com/mail/u/0/#inbox?compose=new" className="text-muted-foreground hover:text-primary transition-colors duration-300 hover:scale-110">
                   <Mail className="h-6 w-6" />
                 </a>
               </div>
