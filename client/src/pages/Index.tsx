@@ -146,11 +146,9 @@ const Index = () => {
             <div className="relative">
               <div className="w-96 h-96 rounded-3xl bg-gradient-to-br from-primary via-accent to-primary p-2 shadow-2xl hover:scale-105 transition-all duration-500">
                 <div className="w-full h-full rounded-2xl overflow-hidden bg-card relative">
-                  <img 
-                    src="/lovable-uploads/4d3b3390-964c-4af3-b8b1-fab4c6c3b7b2.png" 
-                    alt="Mohammad Sami"
-                    className="w-full h-full object-cover object-center"
-                  />
+                  <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+                    <User className="w-32 h-32 text-primary/40" />
+                  </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
                 </div>
               </div>

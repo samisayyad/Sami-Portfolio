@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mohammad Sami - AI Research Engineer</title>
+    <meta name="description" content="Leading applied AI research at Wipro, transforming complex problems into intelligent, scalable solutions through cutting-edge technology and innovative thinking." />
+    <meta property="og:title" content="Mohammad Sami - AI Research Engineer" />
+    <meta property="og:description" content="Leading applied AI research at Wipro, transforming complex problems into intelligent, scalable solutions through cutting-edge technology and innovative thinking." />
+    <meta property="og:type" content="website" />
+    <style>
+      /* Global styles for the portfolio */
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      
+      .hero-3d {
+        perspective: 1000px;
+      }
+      
+      .floating-shapes {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 1;
+      }
+      
+      .floating-shapes .shape {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--accent)));
+        border-radius: 50%;
+        opacity: 0.1;
+        animation: float 6s ease-in-out infinite;
+      }
+      
+      .floating-shapes .shape:nth-child(1) {
+        top: 20%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+      
+      .floating-shapes .shape:nth-child(2) {
+        top: 60%;
+        right: 20%;
+        animation-delay: 2s;
+      }
+      
+      .floating-shapes .shape:nth-child(3) {
+        bottom: 20%;
+        left: 30%;
+        animation-delay: 4s;
+      }
+      
+      @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(180deg); }
+      }
+      
+      .animate-fade-in {
+        animation: fadeIn 1s ease-out;
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      .typing-animation {
+        overflow: hidden;
+        border-right: 0.15em solid hsl(var(--primary));
+        white-space: nowrap;
+        animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+      }
+      
+      @keyframes typing {
+        from { width: 0; }
+        to { width: 100%; }
+      }
+      
+      @keyframes blink-caret {
+        from, to { border-color: transparent; }
+        50% { border-color: hsl(var(--primary)); }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
