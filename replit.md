@@ -6,6 +6,17 @@ This is a full-stack web application built with React (frontend) and Express.js 
 
 Preferred communication style: Simple, everyday language.
 
+## Recent Changes
+
+### December 2024 - Lovable to Replit Migration
+- Successfully migrated Mohammad Sami's portfolio from Lovable to Replit
+- Updated routing from React Router to wouter for compatibility
+- Implemented profile image with dynamic hover effects
+- Redesigned skills section with card-based layout matching reference screenshots
+- Added enhanced animations and visual effects throughout
+- Replaced percentage-based skills with clean icon-based design
+- Updated tech stack to include ML/Data Science, NLP, Web Development, Visualization, and Tools categories
+
 ## System Architecture
 
 ### Frontend Architecture

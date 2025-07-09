@@ -1,5 +1,6 @@
 
 import { ArrowRight, Github, Linkedin, Mail, ExternalLink, Code, Brain, Cloud, Award, User, MessageSquare, Download, MapPin, Calendar, Star, Zap, Cpu, Database, Globe, Server, Smartphone, Palette, Monitor, Layers, GitBranch } from "lucide-react";
+import profileImage from "@assets/profile11_1752055966694.jpg";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -136,6 +137,8 @@ const Index = () => {
           <div className="shape"></div>
           <div className="shape"></div>
           <div className="shape"></div>
+          <div className="shape"></div>
+          <div className="shape"></div>
         </div>
         
         <div className="container mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
@@ -155,11 +158,11 @@ const Index = () => {
               scalable solutions through cutting-edge technology and innovative thinking.
             </p>
             <div className="flex flex-col sm:flex-row gap-6">
-              <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white shadow-2xl hover:scale-105 transition-all duration-300">
+              <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white shadow-2xl hover:scale-105 transition-all duration-300 hover:rotate-1 hover:shadow-primary/50">
                 <Mail className="mr-2 h-5 w-5" />
                 Let's Connect
               </Button>
-              <Button size="lg" variant="outline" className="border-primary/30 text-primary hover:bg-primary/10 shadow-lg hover:scale-105 transition-all duration-300">
+              <Button size="lg" variant="outline" className="border-primary/30 text-primary hover:bg-primary/10 shadow-lg hover:scale-105 transition-all duration-300 hover:-rotate-1 hover:shadow-accent/30">
                 <Download className="mr-2 h-5 w-5" />
                 Download Resume
               </Button>
@@ -167,19 +170,26 @@ const Index = () => {
           </div>
           
           <div className="flex justify-center animate-fade-in">
-            <div className="relative">
-              <div className="w-96 h-96 rounded-3xl bg-gradient-to-br from-primary via-accent to-primary p-2 shadow-2xl hover:scale-105 transition-all duration-500">
+            <div className="relative group">
+              <div className="w-96 h-96 rounded-3xl bg-gradient-to-br from-primary via-accent to-primary p-2 shadow-2xl hover:scale-105 transition-all duration-500 group-hover:rotate-2">
                 <div className="w-full h-full rounded-2xl overflow-hidden bg-card relative">
                   <img 
-                    src="/attached_assets/profile11_1752055966694.jpg" 
+                    src={profileImage} 
                     alt="Mohammad Sami"
-                    className="w-full h-full object-cover object-center"
+                    className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent group-hover:from-primary/40 transition-all duration-500"></div>
+                  <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                    <div className="bg-black/60 backdrop-blur-sm rounded-xl p-4">
+                      <h3 className="text-white font-semibold text-lg">Mohammad Sami</h3>
+                      <p className="text-white/80 text-sm">AI Research Engineer</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="absolute -top-8 -right-8 w-24 h-24 bg-primary/20 rounded-full animate-pulse blur-xl"></div>
-              <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-accent/20 rounded-full animate-pulse blur-xl"></div>
+              <div className="absolute -top-8 -right-8 w-24 h-24 bg-primary/20 rounded-full animate-pulse blur-xl group-hover:bg-primary/30 transition-all duration-500"></div>
+              <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-accent/20 rounded-full animate-pulse blur-xl group-hover:bg-accent/30 transition-all duration-500"></div>
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full border-2 border-white/20 rounded-3xl animate-pulse opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
             </div>
           </div>
         </div>
@@ -310,13 +320,13 @@ const Index = () => {
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     {category.technologies.map((tech, techIndex) => (
-                      <div key={techIndex} className="tech-item text-center p-4 rounded-xl hover:bg-primary/10 cursor-pointer transition-all duration-300">
-                        <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4 hover:bg-primary/30 transition-all duration-300">
-                          <div className="text-primary">
+                      <div key={techIndex} className="tech-item text-center p-4 rounded-xl hover:bg-primary/10 cursor-pointer transition-all duration-300 group hover:scale-105 hover:shadow-lg">
+                        <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/30 transition-all duration-300 group-hover:rotate-12 group-hover:scale-110">
+                          <div className="text-primary group-hover:text-primary/90 transition-all duration-300">
                             {tech.icon}
                           </div>
                         </div>
-                        <h4 className="font-medium text-foreground text-sm">{tech.name}</h4>
+                        <h4 className="font-medium text-foreground text-sm group-hover:text-primary transition-all duration-300">{tech.name}</h4>
                       </div>
                     ))}
                   </div>
