@@ -41,40 +41,64 @@ const Index = () => {
       category: "Programming Languages",
       icon: <Code className="w-8 h-8" />,
       technologies: [
-        { name: "Python", icon: "🐍", level: 95 },
-        { name: "Java", icon: "☕", level: 85 },
-        { name: "C", icon: "💻", level: 80 },
-        { name: "JavaScript", icon: "🟨", level: 75 }
+        { name: "Python", icon: <Code className="w-8 h-8" /> },
+        { name: "Java", icon: <Code className="w-8 h-8" /> },
+        { name: "C", icon: <Code className="w-8 h-8" /> },
+        { name: "SQL", icon: <Database className="w-8 h-8" /> }
       ]
     },
     {
-      category: "AI & Machine Learning",
+      category: "ML / Data Science",
       icon: <Brain className="w-8 h-8" />,
       technologies: [
-        { name: "TensorFlow", icon: "🧠", level: 90 },
-        { name: "PyTorch", icon: "🔥", level: 85 },
-        { name: "Scikit-learn", icon: "📊", level: 88 },
-        { name: "OpenCV", icon: "👁️", level: 82 }
+        { name: "Pandas", icon: <Brain className="w-8 h-8" /> },
+        { name: "NumPy", icon: <Brain className="w-8 h-8" /> },
+        { name: "PyTorch", icon: <Brain className="w-8 h-8" /> },
+        { name: "TensorFlow", icon: <Brain className="w-8 h-8" /> },
+        { name: "OpenCV", icon: <Brain className="w-8 h-8" /> }
       ]
     },
     {
-      category: "Cloud Platforms",
-      icon: <Cloud className="w-8 h-8" />,
+      category: "NLP",
+      icon: <Brain className="w-8 h-8" />,
       technologies: [
-        { name: "AWS", icon: "☁️", level: 88 },
-        { name: "Azure", icon: "🌐", level: 82 },
-        { name: "Docker", icon: "🐳", level: 85 },
-        { name: "Kubernetes", icon: "⚙️", level: 78 }
+        { name: "spaCy", icon: <Brain className="w-8 h-8" /> },
+        { name: "NLTK", icon: <Brain className="w-8 h-8" /> },
+        { name: "Text Extraction (Regex)", icon: <Brain className="w-8 h-8" /> }
       ]
     },
     {
-      category: "Development Tools",
+      category: "Web Development & Deployment",
+      icon: <Globe className="w-8 h-8" />,
+      technologies: [
+        { name: "HTML5", icon: <Globe className="w-8 h-8" /> },
+        { name: "CSS", icon: <Palette className="w-8 h-8" /> },
+        { name: "Flask", icon: <Server className="w-8 h-8" /> },
+        { name: "Streamlit", icon: <Server className="w-8 h-8" /> },
+        { name: "Netlify", icon: <Cloud className="w-8 h-8" /> },
+        { name: "MongoDB", icon: <Database className="w-8 h-8" /> },
+        { name: "MySQL", icon: <Database className="w-8 h-8" /> }
+      ]
+    },
+    {
+      category: "Visualisation",
       icon: <Monitor className="w-8 h-8" />,
       technologies: [
-        { name: "Git", icon: "🔄", level: 90 },
-        { name: "VS Code", icon: "💻", level: 95 },
-        { name: "Jupyter", icon: "📓", level: 88 },
-        { name: "Postman", icon: "📮", level: 80 }
+        { name: "Matplotlib", icon: <Monitor className="w-8 h-8" /> },
+        { name: "PowerBI", icon: <Monitor className="w-8 h-8" /> },
+        { name: "Tableau", icon: <Monitor className="w-8 h-8" /> }
+      ]
+    },
+    {
+      category: "Tools",
+      icon: <Monitor className="w-8 h-8" />,
+      technologies: [
+        { name: "Git", icon: <GitBranch className="w-8 h-8" /> },
+        { name: "GitHub", icon: <GitBranch className="w-8 h-8" /> },
+        { name: "Jupyter", icon: <Monitor className="w-8 h-8" /> },
+        { name: "Figma", icon: <Palette className="w-8 h-8" /> },
+        { name: "Canva", icon: <Palette className="w-8 h-8" /> },
+        { name: "Twilio", icon: <Smartphone className="w-8 h-8" /> }
       ]
     }
   ];
@@ -146,9 +170,11 @@ const Index = () => {
             <div className="relative">
               <div className="w-96 h-96 rounded-3xl bg-gradient-to-br from-primary via-accent to-primary p-2 shadow-2xl hover:scale-105 transition-all duration-500">
                 <div className="w-full h-full rounded-2xl overflow-hidden bg-card relative">
-                  <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                    <User className="w-32 h-32 text-primary/40" />
-                  </div>
+                  <img 
+                    src="/attached_assets/profile11_1752055966694.jpg" 
+                    alt="Mohammad Sami"
+                    className="w-full h-full object-cover object-center"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
                 </div>
               </div>
@@ -272,30 +298,25 @@ const Index = () => {
             <p className="text-2xl text-muted-foreground">Cutting-edge technologies powering innovation</p>
           </div>
           
-          <div className="tech-grid">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {techStack.map((category, categoryIndex) => (
-              <Card key={categoryIndex} className="tech-category skill-card p-8 rounded-2xl">
+              <Card key={categoryIndex} className="tech-category skill-card p-8 rounded-2xl bg-card/80 border-border hover:shadow-2xl transition-all duration-500">
                 <CardContent className="p-0">
-                  <div className="flex items-center mb-8">
-                    <div className="text-primary mr-4">
-                      {category.icon}
-                    </div>
-                    <h3 className="text-2xl font-semibold text-foreground">
+                  <div className="text-center mb-8">
+                    <h3 className="text-2xl font-semibold text-foreground mb-6">
                       {category.category}
                     </h3>
+                    <div className="w-16 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-8"></div>
                   </div>
-                  <div className="grid grid-cols-2 gap-6">
+                  <div className="grid grid-cols-2 gap-4">
                     {category.technologies.map((tech, techIndex) => (
-                      <div key={techIndex} className="tech-item text-center p-4 rounded-xl hover:bg-primary/10 cursor-pointer">
-                        <div className="text-4xl mb-3">{tech.icon}</div>
-                        <h4 className="font-medium text-foreground mb-2">{tech.name}</h4>
-                        <div className="w-full bg-muted rounded-full h-2 mb-2">
-                          <div 
-                            className="bg-gradient-to-r from-primary to-accent h-2 rounded-full transition-all duration-1000"
-                            style={{ width: `${tech.level}%` }}
-                          ></div>
+                      <div key={techIndex} className="tech-item text-center p-4 rounded-xl hover:bg-primary/10 cursor-pointer transition-all duration-300">
+                        <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4 hover:bg-primary/30 transition-all duration-300">
+                          <div className="text-primary">
+                            {tech.icon}
+                          </div>
                         </div>
-                        <span className="text-sm text-muted-foreground">{tech.level}%</span>
+                        <h4 className="font-medium text-foreground text-sm">{tech.name}</h4>
                       </div>
                     ))}
                   </div>
